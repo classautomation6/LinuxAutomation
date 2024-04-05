@@ -1,0 +1,22 @@
+- name: Set up HTTP server and open firewall port
+  hosts: clients
+  become: yes
+
+  tasks:
+    - name: Install Apache (HTTP server)
+      yum:
+        name: httpd
+        state: present
+
+    - name: Ensure Apache service is enabled and started
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Open firewall port 80 for HTTP
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        immediate: yes

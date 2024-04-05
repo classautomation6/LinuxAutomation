@@ -1,0 +1,38 @@
+- name: Partition, Format, and Mount Disk
+  hosts: clients
+  become: yes
+
+  vars:
+    disk_device: "/dev/sdb"
+    partition_number: "1"
+    mount_point: "/mnt/data"
+    filesystem_type: "ext4"
+
+  tasks:
+    - name: Partition the disk
+      parted:
+        device: "{{ disk_device }}"
+        number: "{{ partition_number }}"
+        state: present
+        part_start: 1MB
+        part_end: 10%
+        label: gpt
+
+    - name: Format the partition
+      filesystem:
+        fstype: "{{ filesystem_type }}"
+        dev: "{{ disk_device }}{{ partition_number }}"
+
+    - name: Create mount point directory
+      file:
+        path: "{{ mount_point }}"
+        state: directory
+        mode: '0755'
+
+    - name: Mount the partition
+      mount:
+        path: "{{ mount_point }}"
+        src: "{{ disk_device }}{{ partition_number }}"
+        fstype: "{{ filesystem_type }}"
+        state: mounted
+        opts: defaults
