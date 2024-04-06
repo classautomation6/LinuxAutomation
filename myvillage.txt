@@ -1,0 +1,10 @@
+I am learning linux
+My favorite flavour is redhat
+This is a six month class
+linux has many commands and some of them are pwd, ls, vi, cat, touch, mkdir
+pwd stands for print working directory and it tells us where we are
+ls help to list the content of a directoryvi is a text editor
+touch helps to create files
+mkdir helps to create directories
+my favorite text editor is vi
+we learned AWS few weeks ago
