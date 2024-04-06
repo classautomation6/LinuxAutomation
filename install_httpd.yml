@@ -1,0 +1,15 @@
+- name: Install Apache HTTP server (httpd)
+  hosts: clients
+  become: yes
+  tasks:
+    - name: Install httpd (for CentOS, RHEL, Fedora)
+      yum:
+        name: httpd
+        state: present
+      when: ansible_distribution in ['CentOS', 'RedHat', 'Fedora']
+
+    - name: Install httpd (for Ubuntu, Debian)
+      apt:
+        name: apache2
+        state: present
+      when: ansible_distribution in ['Ubuntu', 'Debian']
