@@ -1,0 +1,15 @@
+- name: Write and execute shell script on clients
+  hosts: clients
+  become: yes
+
+  tasks:
+    - name: Write shell script locally
+      copy:
+        content: |
+          #!/bin/bash
+          echo "Hello Hermine" > /home/jhermine/hello.sh
+        dest: /home/jhermine/hello.sh
+        mode: u=rwx,go=rx
+
+    - name: Execute shell script on client machine
+      shell: /home/jhermine/hello.sh
