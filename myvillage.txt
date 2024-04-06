@@ -8,3 +8,5 @@ touch helps to create files
 mkdir helps to create directories
 my favorite text editor is vi
 we learned AWS few weeks ago
+we are learning git
+
