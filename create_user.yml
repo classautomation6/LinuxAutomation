@@ -1,0 +1,27 @@
+- name: Create user with password
+  hosts: clients
+  become: yes
+ 
+
+  vars:
+
+    username: serge
+
+    password: redhat123
+ 
+
+  tasks:
+
+    - name: Create user
+
+      user:
+
+        name: "{{ username }}"
+
+        password: "{{ password | password_hash('sha512') }}"
+
+        shell: /bin/bash
+
+        createhome: yes
+
+
