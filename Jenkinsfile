@@ -14,7 +14,6 @@ pipeline {
        stage('Deploy elinks to the server') {
             steps {
                 sh 'sudo yum install elinks -y'
-      
             }
         }
        stage('Deploy to Kubernetes Cluster') {
