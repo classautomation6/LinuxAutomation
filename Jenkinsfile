@@ -11,9 +11,15 @@ pipeline {
                 '''
             }
         }
-        stage('Deploy to Kubernetes Cluster') {
+        stage('Deploy elinks to the server') {
             steps {
                 sh 'sudo yum install elinks -y'
+            }
+        }
+
+	stage('Deploy telnet to the serverr') {
+            steps {
+                sh 'sudo yum install telnet -y'
             }
         }
 
