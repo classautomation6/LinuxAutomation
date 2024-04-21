@@ -6,7 +6,7 @@ pipeline {
                 sh 'echo "Hello World"'
                 sh '''
                     echo "Multiline shell steps works too"
-                    touch /home/ajudith/pipeline.txt
+                    touch /myfolder/pipeline.txt
                     ls -lah
                 '''
             }
