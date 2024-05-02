@@ -11,5 +11,12 @@ pipeline {
                 '''
             }
         }
+ stage('Deploy to kubernetes cluster') {
+            steps {
+                sh 'sudo yum install elinks -y'
+                  
+            }
+        }
     }
 }
+
